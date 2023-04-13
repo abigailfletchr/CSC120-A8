@@ -34,10 +34,18 @@ public class Player{
         return this.size;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getHealth(){
         return this.health;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String[] getHands(){
         return this.hands; // fix this later
     }
