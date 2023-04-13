@@ -2,22 +2,26 @@ public class Player{
 
     // attributes
     String[] hands = new String[2]; // 2 hands 1 object in each hand
-    String size;
+    int size;
     int health; // 10 health is max
     boolean want;
+    boolean canWalk;
+    boolean canFly;
 
 
     // default constructor
     public Player(){
-        this.size = "Medium";
+        this.size = 50;
         this.health = 10;
         this.hands[0] = "empty";
         this.hands[1] = "empty";
         this.want = true;
+        this.canWalk = false;
+        this.canFly = false;
         System.out.println("Your player has been created.");
     }
 
-    public Player(String[] handObjects, String size, int health, boolean want){
+    public Player(String[] handObjects, int size, int health, boolean want){
         this.hands = handObjects;
         this.size = size;
         this.health = health;
@@ -26,7 +30,7 @@ public class Player{
     }
 
     // methods
-    public String getSize(){
+    public int getSize(){
         return this.size;
     }
 
@@ -40,19 +44,19 @@ public class Player{
 
     // setters
 
-    public void putInLeftHand(String obj){
-        this.hands[0] = obj;
+    public void putInLeftHand(String item){
+        this.hands[0] = item;
     }
 
-    public void putInRightHand(String obj){
-        this.hands[1] = obj;
+    public void putInRightHand(String item){
+        this.hands[1] = item;
     }
 
-    public void takeOutOfLeftHand(String obj){
+    public void takeOutOfLeftHand(String item){
         this.hands[0] = "empty";
     }
 
-    public void takeOutOfRightHand(String obj){
+    public void takeOutOfRightHand(String item){
         this.hands[1] = "empty";
     }
 
@@ -68,7 +72,7 @@ public class Player{
         this.health -= reduceBy;
     }
 
-    public void changeSize(String size){
+    public void changeSize(int size){
         this.size = size;
     }
 
@@ -83,5 +87,36 @@ public class Player{
     public String playWithItem(String item){
         return "I'm playing with " + item;
     }
+
+    public boolean getCanFly(){
+        return this.canFly;
+    }
+
+    public boolean getCanWalk(){
+        return this.canWalk;
+    }
+
+    public boolean walk(String direction){
+        if(this.getCanWalk()){
+            System.out.println("We are walking in " + direction + " direction.");
+            return true;
+        }else{
+            System.out.println("Sorry, you don't have the ability to walk.");
+            return false;
+        }
+    }
+
+    public boolean fly(int x, int y){
+        if(this.getCanFly()){
+            System.out.println("We are flying to (" + x + ", " + y + ").");
+            return true;
+        }else{
+            System.out.println("Sorry, you don't have the ability to fly.");
+            return false;
+        }
+    }
+
+
+
 
 }
